@@ -1,0 +1,4 @@
+class BaseConfig:
+    SECRET_KEY = '93b45f096492c25e3cfb92f10732fd6a'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///tbl.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
