@@ -1,4 +1,13 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 class BaseConfig:
-    SECRET_KEY = '93b45f096492c25e3cfb92f10732fd6a'
+    DEBUG = False
+    SECRET_KEY = os.environ.get('FLASK_SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = 'sqlite:///tbl.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+class DevConfig:
+    DEBUG = True

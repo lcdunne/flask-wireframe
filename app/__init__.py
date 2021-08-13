@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -9,9 +11,14 @@ migrate = Migrate(compare_type=True)
 # Import the models
 from .models import *
 
-def create_app(cfg='config.BaseConfig'):
+def create_app(cfg=None):
     app = Flask(__name__)
-    
+
+    if cfg is None:
+        # Try to get from config
+        load_dotenv()
+        cfg = os.environ.get('FLASK_CONFIG', 'config.BaseConfig')
+    print("Loading config: ", cfg)    
     app.config.from_object(cfg)
 
     db.init_app(app)
