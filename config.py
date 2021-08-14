@@ -11,3 +11,5 @@ class BaseConfig:
 
 class DevConfig:
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', 'sqlite:///tbl.db')
+    print("\nUsing ", SQLALCHEMY_DATABASE_URI.split(':')[0], "database.\n")
