@@ -8,16 +8,22 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, nullable=False)
     email_address = db.Column(db.Text, nullable=False)
+    password_hash = db.Column(db.Text)
     post = db.relationship('Post', backref='user', lazy=True)
 
     def __repr__(self):
         return '<User {}>'.format(self.name)
     
+    @property
+    def password(self):
+        raise AttributeError('this is not a readable attribute')
+
+    @password.setter
     def set_password(self, password):
-        self.password = generate_password_hash(password)
+        self.password_hash = generate_password_hash(password)
     
     def password_matches(self, to_check):
-        return check_password_hash(self.password, to_check)
+        return check_password_hash(self.password_hash, to_check)
 
 
 class Post(db.Model):
