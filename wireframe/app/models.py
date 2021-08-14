@@ -19,9 +19,9 @@ class User(db.Model):
         raise AttributeError('this is not a readable attribute')
 
     @password.setter
-    def set_password(self, password):
+    def password(self, password):
         self.password_hash = generate_password_hash(password)
-    
+
     def password_matches(self, to_check):
         return check_password_hash(self.password_hash, to_check)
 
