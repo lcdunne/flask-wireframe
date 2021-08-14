@@ -9,7 +9,10 @@ class BaseConfig:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///tbl.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-class DevConfig:
+class DevConfig(BaseConfig):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', 'sqlite:///tbl.db')
     print("\nUsing ", SQLALCHEMY_DATABASE_URI.split(':')[0], "database.\n")
+
+class TestConfig(BaseConfig):
+    DEBUG = True
