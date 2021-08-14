@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+
+  flask:
+    image: python-docker
+    container_name: flask
+    restart: always
+    environment:
+      - PYTHONBUFFERED=1
+      - APP_NAME=flask-wireframe
+      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
+      - FLASK_CONFIG=config.DockerConfig
+      - SQLALCHEMY_DATABASE_URI=${SQLALCHEMY_DATABASE_URI}
+    ports:
+      - '5000:5000'
+    command: ["python", "run.py"]

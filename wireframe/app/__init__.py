@@ -18,7 +18,8 @@ def create_app(cfg=None):
         # Try to get from config
         load_dotenv()
         cfg = os.environ.get('FLASK_CONFIG', 'config.BaseConfig')
-    print("Loading config: ", cfg)    
+
+    print("Loading config: ", cfg)
     app.config.from_object(cfg)
 
     db.init_app(app)

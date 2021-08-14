@@ -12,7 +12,11 @@ class BaseConfig:
 class DevConfig(BaseConfig):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', 'sqlite:///tbl.db')
-    print("\nUsing ", SQLALCHEMY_DATABASE_URI.split(':')[0], "database.\n")
+
+class DockerConfig(BaseConfig):
+    HOST = '0.0.0.0'
+    DEBUG=True
+    print("DockerConfig")
 
 class TestConfig(BaseConfig):
     DEBUG = True
