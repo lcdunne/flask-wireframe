@@ -1,7 +1,10 @@
-from app import create_app, User, Post, db
+from app import create_app, db
+from .models import User, Post
 
 app = create_app()
 app.app_context().push()
+
+# db.create_all()
 
 u1 = User(name='John', email_address='john.doe@gmail.com')
 db.session.add(u1)
