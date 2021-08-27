@@ -8,6 +8,9 @@ class BaseConfig:
     SECRET_KEY = os.environ.get('FLASK_SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = 'sqlite:///tbl.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    CELERY_BROKER_URL = 'pyamqp://guest@localhost//'# 'redis://localhost:6379'
+    CELERY_RESULT_BACKEND = 'rpc://' #'redis://localhost:6379'
+    
 
 class DevConfig(BaseConfig):
     DEBUG = True
