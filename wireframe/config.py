@@ -9,14 +9,14 @@ class BaseConfig:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///tbl.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-class DevConfig(BaseConfig):
+class DevNative(BaseConfig):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', 'sqlite:///tbl.db')
 
-class DockerConfig(BaseConfig):
+class DevDocker(BaseConfig):
     HOST = '0.0.0.0'
     DEBUG=True
     print("DockerConfig")
 
-class TestConfig(BaseConfig):
+class Test(BaseConfig):
     DEBUG = True
